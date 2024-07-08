@@ -2,9 +2,8 @@
 
 
 export const client = async (url: URL) => {
-
+    
     const resource = url.href
-
 
     const headers = new Headers();
     headers.append("Content-type", "application/json; charset=UTF-8");
