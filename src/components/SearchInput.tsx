@@ -20,7 +20,7 @@ const SearchInput: React.FC = () => {
     }
 
     router.replace(`${pathname}?${params.toString()}`);
-  }, 400);
+  }, 200);
 
   return (
     <div className="relative flex flex-1 flex-shrink-0">

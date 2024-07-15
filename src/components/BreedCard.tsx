@@ -1,16 +1,16 @@
 import { CatData } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-import CustomImage from "./CustomImage";
 import { getImage } from "@/lib/getImage";
 
 interface IProps {
   breed: CatData;
 }
 
-const BreedCard = async (props: IProps) => {
-  const { breed } = props;
-  const { base64, img } = await getImage(breed.image.url);
+const BreedCard = async ({ breed }: IProps) => {
+  
+  const imageSrc = breed.image ? breed.image.url : `https://fakeimg.pl/600x400?text=${breed.name}`;
+  const { base64, img } = await getImage(imageSrc);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-4 gap-8 pb-16 sm:pb-8">

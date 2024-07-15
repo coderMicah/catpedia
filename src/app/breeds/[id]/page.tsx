@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import Link from "next/link";
 import { getCatBreedById } from "@/services/queries";
 import CustomImage from "@/components/CustomImage";
@@ -6,6 +6,8 @@ import CustomImage from "@/components/CustomImage";
 
 const CatBreedPage = async ({ params }: { params: { id: string } }) => {
   const catBreed = await getCatBreedById(params.id);
+  const imageSrc = catBreed.reference_image_id ? `https://cdn2.thecatapi.com/images/${catBreed.reference_image_id}.jpg` : `https://fakeimg.pl/600x400?text=${catBreed.name}`;
+
 
   return (
     <div className="p-4 max-w-4xl mx-auto">
@@ -13,7 +15,7 @@ const CatBreedPage = async ({ params }: { params: { id: string } }) => {
       <CustomImage
         width={300}
         height={300}
-        url={`https://cdn2.thecatapi.com/images/${catBreed.reference_image_id}.jpg`}
+        url={imageSrc}
         alt={catBreed.name}
         className="w-full mb-4 rounded-md object-cover"
       />

@@ -20,7 +20,7 @@ const PaginationControls = () => {
     <div className="flex gap-2 ">
       <Button
         variant={"outline"}
-        disabled={currentPage === 0}
+        disabled={Number(currentPage) === 0}
         onClick={() =>
           router.push(`${pathname}/?page=${Number(currentPage) - 1}`)
         }
@@ -29,6 +29,7 @@ const PaginationControls = () => {
       </Button>
       <Button
         variant={"outline"}
+        disabled={Number(currentPage) >= 6}
         onClick={() =>
           router.push(`${pathname}/?page=${Number(currentPage) + 1}`)
         }

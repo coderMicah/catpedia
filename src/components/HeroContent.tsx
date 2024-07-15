@@ -4,7 +4,7 @@ const HeroContent = () => {
   return (
     <section>
       <div className="max-w-7xl mx-auto px-4 py-10">
-        <div className="pt-10 mx-auto max-w-5xl text-center">
+        <div className="py-10 mx-auto max-w-5xl text-center">
           <h1 className="text-4xl md:text-7xl font-bold mb-4">
             Welcome to Catpedia
           </h1>
@@ -15,8 +15,8 @@ const HeroContent = () => {
             information on everything about cats.
           </p>
           <Link
-            href="#"
-            className="bg-blue-500 text-white px-6 py-3 rounded-full text-lg hover:bg-blue-600"
+            href="/breeds"
+            className="bg-orange-500 text-white px-6 py-3 rounded-full text-lg hover:bg-orange-600"
           >
             Explore Now
           </Link>

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { MenuIcon } from "lucide-react";
 import { INavItem } from "../types";
 
-const navItems: INavItem[] = [
+export const navItems: INavItem[] = [
   {
     name: "Home",
     href: "/",
@@ -24,21 +24,21 @@ const navItems: INavItem[] = [
     href: "/care-and-tips",
     ariaLabel: "Link to Care and Tips page",
   },
-  {
-    name: "Interactivity",
-    href: "/interactivity",
-    ariaLabel: "Link to interactivity page",
-  },
-  {
-    name: "Community",
-    href: "/community",
-    ariaLabel: "Link to community page",
-  },
-  {
-    name: "Pricing",
-    href: "/pricing",
-    ariaLabel: "Link to pricing page",
-  },
+  // {
+  //   name: "Interactivity",
+  //   href: "/interactivity",
+  //   ariaLabel: "Link to interactivity page",
+  // },
+  // {
+  //   name: "Community",
+  //   href: "/community",
+  //   ariaLabel: "Link to community page",
+  // },
+  // {
+  //   name: "Pricing",
+  //   href: "/pricing",
+  //   ariaLabel: "Link to pricing page",
+  // },
 ];
 
 const Header = () => {
@@ -47,12 +47,12 @@ const Header = () => {
   return (
     <header>
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <div>
+        <Link href={"/"}>
           <Image src={"/Peeking-Cat.svg"} width={50} height={10} alt="logo" />
           <h1 className="text-sm -mt-4 -ml-1 font-bold text-gray-800">
             Catpedia
           </h1>
-        </div>
+        </Link>
 
         <div className="block lg:hidden">
           <Sheet>
@@ -67,7 +67,7 @@ const Header = () => {
                   <li
                     className={cn(
                       pathname === item.href
-                        ? "text-red-600 hover:text-red-900"
+                        ? "text-orange-400 hover:text-orange-600"
                         : "text-gray-600 hover:text-gray-900"
                     )}
                     key={item.name}
@@ -95,7 +95,7 @@ const Header = () => {
                 <li
                   className={cn(
                     pathname === item.href
-                      ? "text-red-600 hover:text-red-900"
+                      ? "text-orange-400 hover:text-orange-600"
                       : "text-gray-600 hover:text-gray-900"
                   )}
                   key={item.name}

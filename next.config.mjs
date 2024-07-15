@@ -11,7 +11,20 @@ const nextConfig = {
             // port: '',
             // pathname: '/account123/**',
           },
+          {
+            protocol: 'https',
+            hostname: 'fakeimg.pl',
+          },
         ],
+      },
+      async redirects() {
+        return [
+          {
+            source: "/care-and-tips",
+            destination: "/care-and-tips/articles",
+            permanent: true,
+          },
+        ];
       },
 };
 
