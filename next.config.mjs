@@ -15,6 +15,10 @@ const nextConfig = {
             protocol: 'https',
             hostname: 'fakeimg.pl',
           },
+          {
+            protocol: 'https',
+            hostname: 'cdn.sanity.io',
+          },
         ],
       },
       async redirects() {

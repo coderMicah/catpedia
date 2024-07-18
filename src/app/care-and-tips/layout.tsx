@@ -1,4 +1,5 @@
-import SideNav from "@/components/SideNav";
+
+import TipsLayoutProvider from "@/components/TipsLayoutProvider";
 import React from "react";
 
 const CareTipsLayout = ({
@@ -6,12 +7,7 @@ const CareTipsLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return (
-    <div className="max-w-7xl mx-auto px-3 flex flex-col md:flex-row gap-8 my-5">
-      <SideNav />
-      {children}
-    </div>
-  );
+  return <TipsLayoutProvider>{children}</TipsLayoutProvider>;
 };
 
 export default CareTipsLayout;

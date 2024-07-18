@@ -19,7 +19,7 @@ const Tips = () => {
   return (
     <section className="mb-12">
     <h2 className="text-4xl text-gray-900 font-semibold mb-2 ">Tips for New Cat Owners</h2>
-    <p className='mb-5 text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum dolorum cumque quae, excepturi saepe au</p>
+    <p className='mb-5 text-gray-500'>Tips for new cat owners, behavior management, and creating a cat-friendly environment.</p>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {tipsForNewOwners.map((tip, index) => (
         <TipsCard key={index} title={tip.title} description={tip.description}/>

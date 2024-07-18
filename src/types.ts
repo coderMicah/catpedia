@@ -103,3 +103,16 @@ export interface CatImage {
     reference_image_id: string;
   }
   
+  export type IImage = {
+    asset: object[];
+    _type: string;
+    alt?: string; // Optional property
+  }
+  
+  export interface IPost {
+    mainImage: IImage & { alt: string }; // Ensuring mainImage has alt property
+    gifImage: IImage;
+    slug: string;
+    title: string;
+    description: string;
+  }
