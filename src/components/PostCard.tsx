@@ -1,23 +1,21 @@
 "use client";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { AspectRatio } from "./ui/aspect-ratio";
 import Link from "next/link";
 import { IImage } from "@/types";
 import { urlForImage } from "@/sanity/lib/image";
 
-function TipsCard({
+function PostCard({
   title,
-  description,
   mainImage,
   // gifImage,
-  slug
+
+  href
 }: {
   title: string;
-  description: string;
   mainImage:IImage;
   // gifImage:IImage;
-  slug:string;
+
+  href:string;
 }) {
   return (
     <div className="group relative">
@@ -28,13 +26,15 @@ function TipsCard({
         className="h-full w-full object-cover object-center lg:h-full lg:w-full"
         width={200}
         height={500}
+        placeholder="blur"
+        blurDataURL={mainImage.asset.metadata.lqip}
       />
     </div>
 
     <div className="mt-4 ">
       <div>
         <h3 className="text-xl text-gray-700">
-          <Link href={`articles/${slug}`}>
+          <Link href={href}>
             <span aria-hidden="true" className="absolute inset-0" />
             {title}
           </Link>
@@ -47,4 +47,4 @@ function TipsCard({
   );
 }
 
-export default TipsCard;
+export default PostCard;

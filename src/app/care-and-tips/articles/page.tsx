@@ -1,12 +1,10 @@
-import TipsCard from "@/components/TipsCard";
+
+import PostCard from "@/components/PostCard";
 import { getPostsByCategory } from "@/sanity/lib/groqQueries";
-import { IPost } from "@/types";
 
-
-import React from "react";
 
 const Articles = async () => {
- const content:IPost[] = await getPostsByCategory({category:"Articles"});
+ const content = await getPostsByCategory({category:"Articles"});
 
 
   return (
@@ -19,13 +17,12 @@ const Articles = async () => {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {content.map((article, index) => (
-          <TipsCard
+          <PostCard
             key={index}
             title={article.title}
-            description={article.description}
             mainImage={article.mainImage}
             // gifImage={article.gifImage}
-            slug={article.slug}
+            href={`articles/${article.slug}`}
           />
         ))}
       </div>

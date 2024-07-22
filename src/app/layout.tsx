@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(`${inter.className} grid grid-rows-[auto_1fr_auto] min-h-dvh`)}>
+      <body className={cn(`${inter.className} `)}>
         <Header />
         {children}
         <Footer />

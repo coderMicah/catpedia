@@ -1,8 +1,9 @@
+import { IPostArticle, IPostCard } from "@/types"
 import { client } from "./client"
 
 
-export async function getPostsByCategory(category:{category:string}) {
-    const CONTENT_QUERY = `*[_type == "post" && $category in categories[]->title] {
+export async function getPostsByCategory(category: { category: string }): Promise<IPostCard[]> {
+  const CONTENT_QUERY = `*[_type == "post" && $category in categories[]->title] {
     mainImage {
       ...,
       asset->
@@ -13,26 +14,22 @@ export async function getPostsByCategory(category:{category:string}) {
     },
     "slug": slug.current,
       title,
-      description
-
   }
   `
-    const content = await client.fetch(CONTENT_QUERY,category)
-    return content
+  const content = await client.fetch(CONTENT_QUERY, category)
+  return content
 }
 
-export async function getPostByTitle(slug:{slug:string}) {
-    const CONTENT_QUERY = `*[_type == "post" && $slug == slug.current][0] {
-    mainImage {
-      ...,
-      asset->
-    },
+export async function getPostBySlug(slug: { slug: string }): Promise<IPostArticle> {
+  const CONTENT_QUERY = `*[_type == "post" && $slug == slug.current][0] {
     "slug": slug.current,
-      title,
-      description,
-      body,
+    body[] {
+    ...,
+    _type == "image" => {
+      asset-> {...}}
+    }
   }
   `
-    const content = await client.fetch(CONTENT_QUERY,slug)
-    return content
+  const content = await client.fetch(CONTENT_QUERY, slug)
+  return content
 }

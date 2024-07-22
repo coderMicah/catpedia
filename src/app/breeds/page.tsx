@@ -14,6 +14,9 @@ const BreedPage = async ({
   const catBreeds = await getCatBreeds(page as string);
   const searchedCatBreeds = await searchCatBreedByName(query as string);
 
+
+  
+
   return (
     <main className="max-w-7xl mx-auto px-4 min-h-screen">
        <div className="flex justify-between items-center gap-2 my-10">
