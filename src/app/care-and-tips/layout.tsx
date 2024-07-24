@@ -1,5 +1,5 @@
 
-import TipsLayoutProvider from "@/components/TipsLayoutProvider";
+import TipsLayoutProvider from "@/Providers/TipsLayoutProvider";
 import React from "react";
 
 const CareTipsLayout = ({

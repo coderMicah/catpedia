@@ -28,7 +28,7 @@ const SearchInput: React.FC = () => {
         Search
       </label>
       <input
-        className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+        className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 bg-inherit"
         placeholder={"Search Breed"}
         onChange={(e) => {
           handleSearch(e.target.value);

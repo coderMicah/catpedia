@@ -10,7 +10,7 @@ import { AspectRatio } from "./ui/aspect-ratio";
 const SampleImageComponent = ({value}:{value:IImage}) => {
 
   return (
-    <AspectRatio ratio={16 / 9} className="my-8">
+   
       <Image
         src={urlForImage(value).url()}
         alt={value.alt || ""}
@@ -20,7 +20,7 @@ const SampleImageComponent = ({value}:{value:IImage}) => {
         placeholder="blur"
         blurDataURL={value.asset.metadata.lqip}
       />
-    </AspectRatio>
+   
   );
 };
 
@@ -28,19 +28,20 @@ const components: PortableTextComponents = {
   types: {
     image: SampleImageComponent,
   },
+  list: {
+    bullet: ({ children }) => <ul className="mt-4 ml-8 list-disc">{children}</ul>,
+    number: ({ children }) => <ol className="mt-4 ml-8 list-decimal">{children}</ol>,
+    checkmarks: ({ children }) => <ol className="mt-4 ml-8 list-check">{children}</ol>,
+  },
   block: {
-    // Ex. 1: customizing common block types
-    h1: ({ children }) => <h1 className="text-5xl font-semibold  mb-4">{children}</h1>,
-    h2: ({ children }) => <h2 className="text-3xl font-medium">{children}</h2>,
-    h3: ({ children }) => (
-      <h3 className="text-2xl font-medium mt-6 mb-2 text-gray-900">{children}</h3>
-    ),
-    p: ({ children }) => <p className="text-lg">{children}</p>,
-
+    h1: ({ children }) => <h1 className="text-4xl sm:text-5xl font-semibold mb-6">{children}</h1>,
+    h2: ({ children }) => <h2 className="text-3xl sm:text-4xl font-medium mt-8 mb-4">{children}</h2>,
+    h3: ({ children }) => <h3 className="text-2xl sm:text-3xl font-semibold mt-8 mb-4">{children}</h3>,
+    h4: ({ children }) => <h4 className="text-xl sm:text-2xl font-medium mt-6 mb-2">{children}</h4>,
+    p: ({ children }) => <p className="text-lg sm:text-xl mb-4">{children}</p>,
     blockquote: ({ children }) => (
-      <blockquote className="border-l-purple-500">{children}</blockquote>
+      <blockquote className="border-l-4 border-purple-500 pl-4 italic">{children}</blockquote>
     ),
-
   },
 };
 

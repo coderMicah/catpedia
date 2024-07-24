@@ -1,3 +1,4 @@
+import Faq from "@/components/Faq";
 import Feautures from "@/components/Feautures";
 import HeroContent from "@/components/HeroContent";
 import Marquee from "@/components/Marquee";
@@ -12,7 +13,8 @@ export default function Home() {
           <Image src={"/demo.jpg"} width={300} height={300} alt="demo" />
         </Marquee>
       </div>
-      <Feautures />
+      {/* <Feautures />
+      <Faq/> */}
     </main>
   );
 }

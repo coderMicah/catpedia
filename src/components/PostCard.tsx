@@ -33,7 +33,7 @@ function PostCard({
 
     <div className="mt-4 ">
       <div>
-        <h3 className="text-xl text-gray-700">
+        <h3 className="text-xl  font-medium line-clamp-2 hover:line-clamp-none hover:font-semibold ">
           <Link href={href}>
             <span aria-hidden="true" className="absolute inset-0" />
             {title}

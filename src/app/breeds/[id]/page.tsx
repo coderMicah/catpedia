@@ -1,13 +1,12 @@
-
 import Link from "next/link";
 import { getCatBreedById } from "@/services/queries";
 import CustomImage from "@/components/CustomImage";
 
-
 const CatBreedPage = async ({ params }: { params: { id: string } }) => {
   const catBreed = await getCatBreedById(params.id);
-  const imageSrc = catBreed.reference_image_id ? `https://cdn2.thecatapi.com/images/${catBreed.reference_image_id}.jpg` : `https://fakeimg.pl/600x400?text=${catBreed.name}`;
-
+  const imageSrc = catBreed.reference_image_id
+    ? `https://cdn2.thecatapi.com/images/${catBreed.reference_image_id}.jpg`
+    : `https://fakeimg.pl/600x400?text=${catBreed.name}`;
 
   return (
     <div className="p-4 max-w-4xl mx-auto">
@@ -20,7 +19,7 @@ const CatBreedPage = async ({ params }: { params: { id: string } }) => {
         className="w-full mb-4 rounded-md object-cover"
       />
       <h2 className="text-2xl mb-2 font-semibold">Description</h2>
-      <p className="text-gray-700 mb-4">{catBreed.description}</p>
+      <p className=" mb-4">{catBreed.description}</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
@@ -86,6 +85,8 @@ const CatBreedPage = async ({ params }: { params: { id: string } }) => {
         {catBreed.cfa_url && (
           <Link
             href={catBreed.cfa_url}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-500 underline mr-2"
           >
             CFA
@@ -94,6 +95,8 @@ const CatBreedPage = async ({ params }: { params: { id: string } }) => {
         {catBreed.vetstreet_url && (
           <Link
             href={catBreed.vetstreet_url}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-500 underline mr-2"
           >
             Vetstreet
@@ -103,6 +106,8 @@ const CatBreedPage = async ({ params }: { params: { id: string } }) => {
           <Link
             href={catBreed.vcahospitals_url}
             className="text-blue-500 underline"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             VCA Hospitals
           </Link>

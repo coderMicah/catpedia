@@ -28,7 +28,7 @@ const BreedCard = async ({ breed }: IProps) => {
         <h2 className="font-extrabold text-2xl mb-2">{breed.name}</h2>
         <p className="text-lg mb-2">{breed.description}</p>
         <Link
-          className="text-orange-400 hover:text-orange-600 "
+          className="font-medium text-orange-400 hover:text-orange-600 hover:font-semibold "
           href={`/breeds/${breed.id}`}
         >
           Read More

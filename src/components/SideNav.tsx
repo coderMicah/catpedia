@@ -10,7 +10,7 @@ const SideNav = () => {
   const pathname = usePathname();
   
   return (
-    <div className="w-96">
+    <div className="w-56 ">
       <ul className="flex flex-row md:flex-col gap-6">
         <li className="font-semibold ">
           <Link className={cn(pathname === "/care-and-tips/articles" && "text-orange-400 hover:text-orange-600")} href={"/care-and-tips/articles"} >Articles</Link>
