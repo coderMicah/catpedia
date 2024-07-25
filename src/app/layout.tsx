@@ -27,7 +27,7 @@ export default function RootLayout({
       <body  className={cn(`${inter.className} ${montserrat.className}`)}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
