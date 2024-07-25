@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getCatBreedById } from "@/services/queries";
 import CustomImage from "@/components/CustomImage";
 
+
 const CatBreedPage = async ({ params }: { params: { id: string } }) => {
   const catBreed = await getCatBreedById(params.id);
   const imageSrc = catBreed.reference_image_id
@@ -9,110 +10,156 @@ const CatBreedPage = async ({ params }: { params: { id: string } }) => {
     : `https://fakeimg.pl/600x400?text=${catBreed.name}`;
 
   return (
-    <div className="p-4 max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold mb-6">{catBreed.name}</h1>
-      <CustomImage
-        width={300}
-        height={300}
-        url={imageSrc}
-        alt={catBreed.name}
-        className="w-full mb-4 rounded-md object-cover"
-      />
-      <h2 className="text-2xl mb-2 font-semibold">Description</h2>
-      <p className=" mb-4">{catBreed.description}</p>
+    <div className="max-w-5xl mx-auto px-4 mt-10  lg:gap-x-8 xl:gap-x-12">
+      <div >
+        <CustomImage
+          width={300}
+          height={600}
+          url={imageSrc}
+          alt={catBreed.name}
+          className="rounded-md object-cover"
+        />
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <h2 className="font-semibold">Origin</h2>
-          <p>{catBreed.origin}</p>
-        </div>
-        <div>
-          <h2 className="font-semibold">Life Span</h2>
-          <p>{catBreed.life_span} years</p>
-        </div>
-        <div>
-          <h2 className="font-semibold">Weight</h2>
+      <div className="lg:col-span-4 mt-10 lg:mt-0">
+        <h1 className="text-4xl font-bold my-6">{catBreed.name}</h1>
+        <p className="mb-4">{catBreed.description}</p>
+
+        <ul className="space-y-4">
+          <li>
+            <strong>Origin:</strong> {catBreed.origin}
+          </li>
+          <li>
+            <strong>Life Span:</strong> {catBreed.life_span} years
+          </li>
+          <li>
+            <strong>Weight:</strong> {catBreed.weight.imperial} lbs (
+            {catBreed.weight.metric} kg)
+          </li>
+          <li>
+            <strong>Temperament:</strong> {catBreed.temperament}
+          </li>
+        </ul>
+
+        <div className="flex items-center flex-wrap space-x-4 my-4">
           <p>
-            {catBreed.weight.imperial} lbs ({catBreed.weight.metric} kg)
+            {" "}
+            <strong>Other Links</strong>{" "}
           </p>
+          {catBreed.cfa_url && (
+            <Link
+              href={catBreed.cfa_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-500 underline mr-2"
+            >
+               CFA
+            </Link>
+          )}
+          {catBreed.vetstreet_url && (
+            <Link
+              href={catBreed.vetstreet_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-500 underline mr-2  gap-x-2"
+            >
+              Vetstreet
+            </Link>
+          )}
+          {catBreed.vcahospitals_url && (
+            <Link
+              href={catBreed.vcahospitals_url}
+              className="text-orange-500 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              VCA Hospitals
+            </Link>
+          )}
+          {catBreed.wikipedia_url && (
+            <Link
+              href={catBreed.wikipedia_url}
+              className="text-orange-500 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              VCA Hospitals
+            </Link>
+          )}
         </div>
-        <div>
-          <h2 className="font-semibold">Temperament</h2>
-          <p>{catBreed.temperament}</p>
-        </div>
-        <div>
-          <h2 className="font-semibold">Affection Level</h2>
-          <p>{catBreed.affection_level}/5</p>
-        </div>
-        <div>
-          <h2 className="font-semibold">Child Friendly</h2>
-          <p>{catBreed.child_friendly}/5</p>
-        </div>
-        <div>
-          <h2 className="font-semibold">Dog Friendly</h2>
-          <p>{catBreed.dog_friendly}/5</p>
-        </div>
-        <div>
-          <h2 className="font-semibold">Energy Level</h2>
-          <p>{catBreed.energy_level}/5</p>
-        </div>
-        <div>
-          <h2 className="font-semibold">Grooming</h2>
-          <p>{catBreed.grooming}/5</p>
-        </div>
-        <div>
-          <h2 className="font-semibold">Health Issues</h2>
-          <p>{catBreed.health_issues}/5</p>
-        </div>
-        <div>
-          <h2 className="font-semibold">Intelligence</h2>
-          <p>{catBreed.intelligence}/5</p>
-        </div>
-        <div>
-          <h2 className="font-semibold">Shedding Level</h2>
-          <p>{catBreed.shedding_level}/5</p>
-        </div>
-        <div>
-          <h2 className="font-semibold">Social Needs</h2>
-          <p>{catBreed.social_needs}/5</p>
-        </div>
-        <div>
-          <h2 className="font-semibold">Stranger Friendly</h2>
-          <p>{catBreed.stranger_friendly}/5</p>
+
+        <div className="my-12">
+          <h2 className="text-3xl font-semibold mt-12 mb-4">Characteristics</h2>
+          <ul className="list-disc list-inside space-y-4">
+            <li className="flex  justify-between items-center">
+              <span>Indoor:</span> <StarRating rating={catBreed.indoor} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Lap Cat:</span> <StarRating rating={catBreed.lap} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Adaptability:</span>{" "}
+              <StarRating rating={catBreed.adaptability} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Affection Level:</span>{" "}
+              <StarRating rating={catBreed.affection_level} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Child Friendly:</span>{" "}
+              <StarRating rating={catBreed.child_friendly} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Dog Friendly:</span>{" "}
+              <StarRating rating={catBreed.dog_friendly} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Energy Level:</span>{" "}
+              <StarRating rating={catBreed.energy_level} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Grooming:</span> <StarRating rating={catBreed.grooming} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Health Issues:</span>{" "}
+              <StarRating rating={catBreed.health_issues} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Intelligence:</span>{" "}
+              <StarRating rating={catBreed.intelligence} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Shedding Level:</span>{" "}
+              <StarRating rating={catBreed.shedding_level} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Social Needs:</span>{" "}
+              <StarRating rating={catBreed.social_needs} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Stranger Friendly:</span>{" "}
+              <StarRating rating={catBreed.stranger_friendly} />
+            </li>
+            <li className="flex  justify-between items-center">
+              <span>Vocalisation:</span>{" "}
+              <StarRating rating={catBreed.vocalisation} />
+            </li>
+          </ul>
         </div>
       </div>
-      <div className="mt-4">
-        {catBreed.cfa_url && (
-          <Link
-            href={catBreed.cfa_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 underline mr-2"
-          >
-            CFA
-          </Link>
-        )}
-        {catBreed.vetstreet_url && (
-          <Link
-            href={catBreed.vetstreet_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 underline mr-2"
-          >
-            Vetstreet
-          </Link>
-        )}
-        {catBreed.vcahospitals_url && (
-          <Link
-            href={catBreed.vcahospitals_url}
-            className="text-blue-500 underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            VCA Hospitals
-          </Link>
-        )}
-      </div>
+    </div>
+  );
+};
+
+const StarRating = ({ rating }: { rating: number }) => {
+  return (
+    <div className="flex gap-x-2 [@media(min-width:500px)]:gap-x-6">
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className={`w-6 [@media(min-width:500px)]:w-12 h-2 rounded-lg space-x-2 [@media(min-width:500px)]:space-x-6 ${i < rating ? "bg-orange-600" : "bg-gray-300"}`}
+        ></div>
+      ))}
     </div>
   );
 };

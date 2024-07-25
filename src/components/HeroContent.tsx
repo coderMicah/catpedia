@@ -3,17 +3,16 @@ import Link from "next/link";
 const HeroContent = () => {
   return (
     <section>
-    
       <div>
         <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
-          <div className="max-w-4xl text-center mx-auto">
-            <h1 className="block font-medium text-primary text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+          <div className="max-w-3xl text-center mx-auto">
+            <h1 className="block font-medium text-primary dark:text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
               Welcome to Catpedia
             </h1>
           </div>
 
           <div className="max-w-3xl text-center mx-auto">
-            <p className="text-lg text-primary/70">
+            <p className="text-lg text-primary/70 dark:text-white">
               CatPedia aims to serve as a go-to resource for cat lovers of all
               levels of experience, offering valuable information and fostering
               a community around shared love for cats. Your ultimate source of
@@ -35,9 +34,9 @@ const HeroContent = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path d="m9 18 6-6-6-6" />
               </svg>

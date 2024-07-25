@@ -20,7 +20,10 @@ const SearchInput: React.FC = () => {
     }
 
     router.replace(`${pathname}?${params.toString()}`);
-  }, 200);
+  }, 200,{
+    leading: true,
+    trailing: false,
+  });
 
   return (
     <div className="relative flex flex-1 flex-shrink-0">
@@ -36,6 +39,7 @@ const SearchInput: React.FC = () => {
         defaultValue={searchParams.get("query")?.toString()}
       />
       <Search className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+     
     </div>
   );
 };

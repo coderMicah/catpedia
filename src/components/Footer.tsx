@@ -1,5 +1,5 @@
 import React from "react";
-import { ModeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Footer = () => {
   return (
@@ -9,14 +9,14 @@ const Footer = () => {
       <div className="py-6 border-t border-gray-200 dark:border-neutral-700">
         <div className="flex flex-wrap justify-between items-center gap-2">
           <div>
-            <p className="text-sm text-gray-600 dark:text-neutral-400">
+            <p className="text-sm text-gray-600 dark:text-white">
               &copy; 2024 Catpedia. All rights reserved.
             </p>
           </div>
 
           <ul className="flex flex-wrap items-center">
             <li className="inline-block">
-              <ModeToggle />
+              <ThemeToggle />
             </li>
           </ul>
         </div>

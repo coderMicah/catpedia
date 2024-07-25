@@ -1,49 +1,39 @@
-"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { IImage } from "@/types";
 import { urlForImage } from "@/sanity/lib/image";
 
+
 function PostCard({
   title,
   mainImage,
-  // gifImage,
-
-  href
+  href,
 }: {
   title: string;
-  mainImage:IImage;
-  // gifImage:IImage;
-
-  href:string;
+  mainImage: IImage;
+  href: string;
 }) {
   return (
-    <div className="group relative">
-    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md h-[300px] bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-      <Image
-        src={urlForImage(mainImage).url()}
-        alt={title}
-        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-        width={200}
-        height={500}
-        placeholder="blur"
-        blurDataURL={mainImage.asset.metadata.lqip}
-      />
-    </div>
-
-    <div className="mt-4 ">
-      <div>
-        <h3 className="text-xl  font-medium line-clamp-2 hover:line-clamp-none hover:font-semibold ">
-          <Link href={href}>
-            <span aria-hidden="true" className="absolute inset-0" />
-            {title}
-          </Link>
-        </h3>
-        {/* <p className="mt-1 text-sm text-gray-500">Category</p> */}
+    <Link className="group flex flex-col focus:outline-none" href={href}>
+      <div className="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
+        <Image
+          className="size-full absolute top-0 start-0 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
+          src={urlForImage(mainImage).url()}
+          width={300}
+          height={300}
+          placeholder="blur"
+          blurDataURL={mainImage.asset.metadata.lqip}
+          alt="card image"
+        />
       </div>
-      {/* <p className="text-sm font-medium text-gray-900">{description}</p> */}
-    </div>
-  </div>
+
+      <div className="mt-5">
+        <h3 className="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-neutral-300 dark:group-hover:text-white ">
+          {title}
+        </h3>
+      </div>
+    </Link>
   );
 }
 
